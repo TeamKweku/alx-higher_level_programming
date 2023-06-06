@@ -10,7 +10,7 @@ int check_cycle(listint_t *list)
 	listint_t *slow_ptr;
 	listint_t *fast_ptr;
 
-	if (list == NULL)
+	if (!list)
 		return (2);
 	slow_ptr = fast_ptr = list;
 
