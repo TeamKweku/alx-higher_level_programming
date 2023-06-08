@@ -6,5 +6,5 @@ if __name__ == "__main__":
     total = 0
     argc = len(sys.argv) - 1
     for i in range(argc):
-        total += int(sys.argv[i + 1]) # all argv aside agrv[0]
+        total += int(sys.argv[i + 1])
     print("{:d}".format(total))
