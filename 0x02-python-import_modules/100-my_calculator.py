@@ -10,7 +10,7 @@ if __name__ == "__main__":
 
     ops = {"+": add, "-": sub, "*": mul, "/": div}
     if argv[2] not in list(ops.keys()):
-        print("Unknown operator. Available operators: +, -, *, and /")
+        print("Unknown operator. Available operators: +, -, * and /")
         exit(1)
     a = int(argv[1])
     b = int(argv[3])
