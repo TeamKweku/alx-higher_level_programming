@@ -1,7 +1,6 @@
 #!/usr/bin/python3
 def print_matrix_integer(matrix=[[]]):
     """ function that prints a matrix of ints
-        
         Args:
             matrix: matrix to be printed
 
@@ -18,4 +17,3 @@ def print_matrix_integer(matrix=[[]]):
             if i < len(row) - 1:
                 print(" ", end="")
         print()
-
