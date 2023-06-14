@@ -11,7 +11,5 @@ def search_replace(my_list, search, replace):
         Return:
             return value. new_list
     """
-    if not my_list or not search or not replace:
-        return
     new_list = [replace if x == search else x for x in my_list]
     return (new_list)
