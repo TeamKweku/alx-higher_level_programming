@@ -8,8 +8,6 @@ def uniq_add(my_list=[]):
         Returns:
             return value. sum of all unique ints in list
     """
-    if not my_list:
-        return (None)
     result = 0
     for i in set(my_list):
         result += i
