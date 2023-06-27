@@ -114,7 +114,8 @@ class Square:
             position: tuple of 2 values
         """
         if self.__size == 0:
-            print()
+            print("")
+            return
         else:
             for i in range(self.__position[1]):
                 print()
