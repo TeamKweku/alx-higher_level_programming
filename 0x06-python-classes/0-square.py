@@ -1,11 +1,7 @@
 #!/usr/bin/python3
+"""This is a module for a class definition of a square"""
+
+
 class Square:
-    """ a class that defines a square """
-
-    def __init__(self, size):
-        """ Initialize a new Square object
-
-        Args:
-            size: the size of the new square
-        """
-    self.__size = size
+    """ This is an implementation of a class Square"""
+    pass
