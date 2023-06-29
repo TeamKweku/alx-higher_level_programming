@@ -124,7 +124,7 @@ class SinglyLinkedList:
         Prints all nodes of a linked list
         """
         if self.head is None:
-            return "Empty list"
+            return ""
 
         temp = self.head
         list_str = ""
