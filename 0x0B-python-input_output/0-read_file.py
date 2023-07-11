@@ -10,5 +10,5 @@ def read_file(filename=""):
         filename(str): string rep of the text file
     """
     with open(filename, encoding='utf-8') as a_file:
-        lines = a_file.read()
-        print(lines.strip())
+        for line in a_file:
+            print(line, end="")
