@@ -4,14 +4,16 @@ from models.rectangle import Rectangle
 
 class TestRectangle(unittest.TestCase):
     """a unittest to test the class Rectangle"""
+    def setUp(self):
+        """Initializing an instance of the Rectangle class"""
+        self.rectangle = Rectangle(5, 10)
 
     def test_init_with_valid_args(self):
         """test case with valid arguments """
-        rectangle = Rectangle(10, 20)
-        self.assertEqual(rectangle.width, 10)
-        self.assertEqual(rectangle.height, 20)
-        self.assertEqual(rectangle.x, 0)
-        self.assertEqual(rectangle.y, 0)
+        self.assertEqual(self.rectangle.width, 5)
+        self.assertEqual(self.rectangle.height, 10)
+        self.assertEqual(self.rectangle.x, 0)
+        self.assertEqual(self.rectangle.y, 0)
 
     def test_init_with_no_args(self):
         with self.assertRaises(TypeError):
@@ -19,6 +21,13 @@ class TestRectangle(unittest.TestCase):
 
         with self.assertRaises(TypeError):
             Rectangle(5)
+
+    def test_init_with_zero(self):
+        with self.assertRaises(ValueError):
+            Rectangle(0, 5)
+
+        with self.assertRaises(ValueError):
+            Rectangle(5, 0)
 
     def test_init_with_negative(self):
         """test case with negative width and height"""
@@ -32,52 +41,46 @@ class TestRectangle(unittest.TestCase):
         """test case of setting width or height to an
         instance of the class
         """
-        rectangle = Rectangle(5, 10)
-        rectangle.width = 15
-        rectangle.height = 10
-        self.assertEqual(rectangle.width, 15)
-        self.assertEqual(rectangle.height, 10)
+        self.rectangle.width = 15
+        self.rectangle.height = 10
+        self.assertEqual(self.rectangle.width, 15)
+        self.assertEqual(self.rectangle.height, 10)
 
     def test_set_with_negative_value(self):
         """test case of setting an instance with negative value"""
-        rectangle = Rectangle(5, 10)
         with self.assertRaises(ValueError):
-            rectangle.width = -5
+            self.rectangle.width = -5
 
         with self.assertRaises(ValueError):
-            rectangle.height = -10
-    
+            self.rectangle.height = -10
+
     def test_set_with_noninteger(self):
         """Test case for setting with a non-int value"""
-        rectangle = Rectangle(5, 10)
         with self.assertRaises(TypeError):
-            rectangle.width = 5.5
+            self.rectangle.width = 5.5
 
         with self.assertRaises(TypeError):
-            rectangle.height = 2.5
+            self.rectangle.height = 2.5
 
     def test_set_x_y_valid_value(self):
         """ test case for setting x or y valid arguments"""
-        rectangle = Rectangle(5, 10)
-        rectangle.x = 3
-        rectangle.y = 10
-        self.assertEqual(rectangle.x, 3)
-        self.assertEqual(rectangle.y, 10)
+        self.rectangle.x = 3
+        self.rectangle.y = 10
+        self.assertEqual(self.rectangle.x, 3)
+        self.assertEqual(self.rectangle.y, 10)
 
     def test_set_x_y_non_int_value(self):
         """test case for setting x and y to a non integer"""
-        rectangle = Rectangle(5, 10)
         with self.assertRaises(TypeError):
-            rectangle.x = 3.5
+            self.rectangle.x = 3.5
 
         with self.assertRaises(TypeError):
-            rectangle.y = 2.5
+            self.rectangle.y = 2.5
 
     def test_set_x_y_to_negative_value(self):
         """test case for negative values"""
-        rectangle = Rectangle(5, 10)
         with self.assertRaises(ValueError):
-            rectangle.x = -4
+            self.rectangle.x = -4
 
         with self.assertRaises(ValueError):
-            rectangle.y = -4
+            self.rectangle.y = -4
