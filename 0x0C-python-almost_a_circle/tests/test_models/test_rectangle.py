@@ -1,4 +1,5 @@
 import unittest
+from unittest.mock import patch
 from models.rectangle import Rectangle
 
 
@@ -84,3 +85,17 @@ class TestRectangle(unittest.TestCase):
 
         with self.assertRaises(ValueError):
             self.rectangle.y = -4
+
+    def test_area(self):
+        """test the area of the the rectangle instance"""
+        self.assertEqual(self.rectangle.area(), 50)
+
+        r1 = Rectangle(8, 7, 0, 0, 12)
+        self.assertEqual(r1.area(), 56)
+
+
+    def test_str(self):
+        """Test case of __str__ method call"""
+        r1 = Rectangle(4, 6, 2, 1, 12)
+        expected_output = "[Rectangle] (12) 2/1 - 4/6"
+        self.assertEqual(str(r1), expected_output)

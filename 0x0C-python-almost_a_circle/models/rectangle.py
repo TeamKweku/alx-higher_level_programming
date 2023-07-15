@@ -124,3 +124,35 @@ class Rectangle(Base):
             raise ValueError("y must be >= 0")
 
         self.__y = value
+
+
+    def area(self):
+        """
+        Calculates the area of the rectangle
+
+        Args:
+            width(int): width of the rectangle
+            height(int): height of the rectangle
+
+        Returns:
+            int: area of the rectangle
+        """
+
+        return self.__width * self.__height
+
+
+    def display(self):
+        """
+        method that prints to stdout the rectangle with the
+        `#` character
+        """
+        for _ in range(self.__height):
+            print("#" * self.__width)
+
+    def __str__(self):
+        """method that defines the string rep of an instance of the
+        rectangle class
+        """
+        rectangle_str = f"[Rectangle] ({self.id}) {self.__x}/{self.__y}"
+        rectangle_str += f" - {self.__width}/{self.__height}"
+        return rectangle_str
