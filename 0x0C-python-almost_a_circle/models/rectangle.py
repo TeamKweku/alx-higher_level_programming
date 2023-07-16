@@ -11,6 +11,7 @@ class Rectangle(Base):
         width(int): the width of the rectangle
         height(int): the height of the rectangle
     """
+
     def __init__(self, width, height, x=0, y=0, id=None):
         super().__init__(id)
         self.width = width
@@ -125,7 +126,6 @@ class Rectangle(Base):
 
         self.__y = value
 
-
     def area(self):
         """
         Calculates the area of the rectangle
@@ -140,10 +140,8 @@ class Rectangle(Base):
 
         return self.__width * self.__height
 
-
     def display(self):
-        """
-        method that prints to stdout the rectangle with the
+        """method that prints to stdout the rectangle with the
         `#` character
         """
         print("\n" * self.__y, end="")
@@ -158,21 +156,21 @@ class Rectangle(Base):
         rectangle_str = f"[Rectangle] ({self.id}) {self.__x}/{self.__y}"
         rectangle_str += f" - {self.__width}/{self.__height}"
         return rectangle_str
-    
-    def update(self, *args):
-        """a method that updates the arguments of each attribute of the class
-        
-            Args:
-                args: a list of positional arguments
-        """
-        if len(args) >= 1:
-            self.id = args[0]
-        if len(args) >= 2:
-            self.width = args[1]
-        if len(args) >= 3:
-            self.height = args[2]
-        if len(args) >= 4:
-            self.x = args[3]
-        if len(args) >= 5:
-            self.y = args[4]
 
+    def update(self, *args, **kwargs):
+        """a method that updates the arguments of each attribute of the class
+
+        Args:
+            args: a list of positional arguments
+            kwargs: a dict of key, value pair
+        """
+        if args and len(args) != 0:
+            attr_names = ["id", "width", "height", "x", "y"]
+
+            for index, arg in enumerate(args):
+                if index < len(attr_names):
+                    setattr(self, attr_names[index], arg)
+        else:
+            if kwargs and len(kwargs) != 0:
+                for key, value in kwargs.items():
+                    setattr(self, key, value)

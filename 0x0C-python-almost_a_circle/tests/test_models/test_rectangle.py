@@ -7,7 +7,7 @@ class TestRectangle(unittest.TestCase):
     """a unittest to test the class Rectangle"""
 
     def test_init_with_valid_args(self):
-        """test case with valid arguments """
+        """test case with valid arguments"""
         rectangle = Rectangle(5, 10, 4, 3, 12)
         self.assertEqual(rectangle.width, 5)
         self.assertEqual(rectangle.height, 10)
@@ -67,7 +67,7 @@ class TestRectangle(unittest.TestCase):
             rectangle.height = 2.5
 
     def test_set_x_y_valid_value(self):
-        """ test case for setting x or y valid arguments"""
+        """test case for setting x or y valid arguments"""
         rectangle = Rectangle(5, 10)
         rectangle.x = 3
         rectangle.y = 10
@@ -100,7 +100,6 @@ class TestRectangle(unittest.TestCase):
         r1 = Rectangle(8, 7, 0, 0, 12)
         self.assertEqual(r1.area(), 56)
 
-
     def test_str(self):
         """Test case of __str__ method call"""
         r1 = Rectangle(4, 6, 2, 1, 12)
@@ -131,7 +130,7 @@ class TestRectangle(unittest.TestCase):
 
     def test_update_with_no_args(self):
         """Test for an empty value call to update method"""
-        rectangle = Rectangle(5, 10)
+        rectangle = Rectangle(5, 10, 0, 0, 13)
 
         rectangle.update()
 
@@ -141,3 +140,12 @@ class TestRectangle(unittest.TestCase):
         self.assertEqual(rectangle.x, 0)
         self.assertEqual(rectangle.y, 0)
 
+    def test_update_with_kwargs(self):
+        """Test for instance of kwargs passed to update method"""
+        rectangle = Rectangle(10, 10, 10, 10)
+        rectangle.update(y=1, width=2, x=3, id=89)
+
+        self.assertEqual(rectangle.id, 89)
+        self.assertEqual(rectangle.width, 2)
+        self.assertEqual(rectangle.x, 3)
+        self.assertEqual(rectangle.y, 1)
