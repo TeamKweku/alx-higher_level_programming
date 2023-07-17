@@ -69,3 +69,45 @@ class Base:
 
         with open(file_name, mode='w', encoding='utf-8') as file:
             file.write(jstr)
+
+    @classmethod
+    def create(cls, **dictionary):
+        """
+        method that returns an instance with all attributes set
+
+        Args:
+            cls: class to create its instance
+            dictionary: dic with key, value pairs to set
+
+        Returns:
+            an instance with all attrs set
+        """
+        if dictionary and dictionary != {}:
+            if cls.__name__ == "Rectangle":
+                dummy_instance = cls(1, 1)
+            else:
+                dummy_instance = cls(1)
+
+        dummy_instance.update(**dictionary)
+
+        return dummy_instance
+    
+    @classmethod
+    def load_from_file(cls):
+        """
+        returns a list of instance
+
+        Args:
+            cls: class passed to function
+        """
+        file = cls.__name__ + ".json"
+
+        try:
+            with open(file, encoding='utf-8') as a_file:
+                json_str = a_file.read()
+                dicts = cls.from_json_string(json_str)
+                
+                instances = [cls.create(**dic) for dic in dicts]
+                return instances
+        except FileNotFoundError:
+            return []
