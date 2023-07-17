@@ -35,7 +35,7 @@ class Square(Rectangle):
 
     def update(self, *args, **kwargs):
         """method that assign attributes to an instance of the class
-            
+
             Args:
                 args: list of positional arguments
                 kwargs: dict of key, value pair of arguments
