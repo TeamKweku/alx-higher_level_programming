@@ -26,9 +26,10 @@ class TestBase(unittest.TestCase):
         base = Base(0)
         self.assertEqual(base.id, 0)
 
+
 class TestBaseToJSONString(unittest.TestCase):
     """Unittest for the to_json_string method """
-    
+
     def test_to_json_string_with_None(self):
         """Testing with None"""
         self.assertEqual(Base.to_json_string(None), '[]')
@@ -46,9 +47,10 @@ class TestBaseToJSONString(unittest.TestCase):
         b1 = Base.to_json_string([{'id': 12}])
         self.assertEqual(type(b1), type('str'))
 
+
 class TestBaseFromJSONString(unittest.TestCase):
     """Tesing the from_json_string function """
-    
+
     def test_from_json_string_with_None(self):
         """Testing fo None as argument """
         self.assertEqual(Base.from_json_string(None), [])

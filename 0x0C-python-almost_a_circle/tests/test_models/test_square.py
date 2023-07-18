@@ -89,6 +89,7 @@ class TestSquare(unittest.TestCase):
         self.assertEqual(s2.y, 1)
         self.assertEqual(s2.id, 89)
 
+
 class TestSquareCreate(unittest.TestCase):
     """Testing the create method """
     def test_create_with_id(self):

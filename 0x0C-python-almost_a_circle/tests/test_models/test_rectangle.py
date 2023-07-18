@@ -177,6 +177,7 @@ class TestRectangle(unittest.TestCase):
         exp = {'id': 7, 'width': 3, 'height': 2, 'x': 3, 'y': 2}
         self.assertEqual(rectangle.to_dictionary(), exp)
 
+
 class TestRectangleCreate(unittest.TestCase):
     """Testing the create method """
     def test_create_with_id(self):
@@ -192,7 +193,7 @@ class TestRectangleCreate(unittest.TestCase):
 
     def test_create_with_height(self):
         """test with height """
-        r = Rectangle.create(**{ 'id': 89, 'width': 1, 'height': 2 })
+        r = Rectangle.create(**{'id': 89, 'width': 1, 'height': 2})
         self.assertEqual(r.id, 89)
         self.assertEqual(r.width, 1)
         self.assertEqual(r.height, 2)

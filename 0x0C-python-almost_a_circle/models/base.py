@@ -42,7 +42,7 @@ class Base:
 
         Args:
             json_string(str): json string
-            
+
         Returns:
             list of JSON string representation
         """
@@ -91,7 +91,7 @@ class Base:
         dummy_instance.update(**dictionary)
 
         return dummy_instance
-    
+
     @classmethod
     def load_from_file(cls):
         """
@@ -106,7 +106,7 @@ class Base:
             with open(file, encoding='utf-8') as a_file:
                 json_str = a_file.read()
                 dicts = cls.from_json_string(json_str)
-                
+
                 instances = [cls.create(**dic) for dic in dicts]
                 return instances
         except FileNotFoundError:
