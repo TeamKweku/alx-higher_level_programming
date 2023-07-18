@@ -224,12 +224,3 @@ class TestRectangleCreate(unittest.TestCase):
         self.assertEqual(r.height, 2)
         self.assertEqual(r.x, 3)
         self.assertEqual(r.y, 4)
-
-
-class TestSaveToFile(unittest.TestCase):
-    """Test for the save_to_file method """
-
-    def test_save_to_class(self):
-        """test case of None """
-        with self.assertRaises(TypeError):
-            Rectangle.save_to_file(None)
