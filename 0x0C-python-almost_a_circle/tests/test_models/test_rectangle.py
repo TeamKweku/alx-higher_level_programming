@@ -1,5 +1,6 @@
 import unittest
-from unittest.mock import patch
+import sys
+from io import StringIO
 from models.rectangle import Rectangle
 
 
@@ -56,6 +57,26 @@ class TestRectangle(unittest.TestCase):
 
         with self.assertRaises(ValueError):
             rectangle.height = -10
+
+        with self.assertRaises(ValueError):
+            Rectangle(1, 2, -3)
+
+        with self.assertRaises(ValueError):
+            Rectangle(1, 2, 3, -4)
+
+    def test_with_string_to_one_arg(self):
+        """Test case of passing a string as one arg"""
+        with self.assertRaises(TypeError):
+            Rectangle("1", 2)
+
+        with self.assertRaises(TypeError):
+            Rectangle(1, "2")
+
+        with self.assertRaises(TypeError):
+            Rectangle(1, 2, "3")
+
+        with self.assertRaises(TypeError):
+            Rectangle(1, 2, 3, "4")
 
     def test_set_with_noninteger(self):
         """Test case for setting with a non-int value"""
@@ -149,3 +170,66 @@ class TestRectangle(unittest.TestCase):
         self.assertEqual(rectangle.width, 2)
         self.assertEqual(rectangle.x, 3)
         self.assertEqual(rectangle.y, 1)
+
+    def test_to_dictionary(self):
+        """ Test to dictionary function """
+        rectangle = Rectangle(3, 2, 3, 2, 7)
+        exp = {'id': 7, 'width': 3, 'height': 2, 'x': 3, 'y': 2}
+        self.assertEqual(rectangle.to_dictionary(), exp)
+
+class TestRectangleCreate(unittest.TestCase):
+    """Testing the create method """
+    def test_create_with_id(self):
+        """ test create with id """
+        rectangle = Rectangle.create(**{'id': 89})
+        self.assertEqual(rectangle.id, 89)
+
+    def test_create_with_width(self):
+        """Test with width """
+        rec = Rectangle.create(**{'id': 89, 'width': 1})
+        self.assertEqual(rec.width, 1)
+        self.assertEqual(rec.id, 89)
+
+    def test_create_with_height(self):
+        """test with height """
+        r = Rectangle.create(**{ 'id': 89, 'width': 1, 'height': 2 })
+        self.assertEqual(r.id, 89)
+        self.assertEqual(r.width, 1)
+        self.assertEqual(r.height, 2)
+
+    def test_create_with_x(self):
+        """test with x value """
+        r = Rectangle.create(**{
+            'id': 89,
+            'width': 1,
+            'height': 2,
+            'x': 3
+        })
+        self.assertEqual(r.id, 89)
+        self.assertEqual(r.width, 1)
+        self.assertEqual(r.height, 2)
+        self.assertEqual(r.x, 3)
+
+    def test_create_with_x(self):
+        """test with y value """
+        r = Rectangle.create(**{
+            'id': 89,
+            'width': 1,
+            'height': 2,
+            'x': 3,
+            'y': 4,
+        })
+        self.assertEqual(r.id, 89)
+        self.assertEqual(r.width, 1)
+        self.assertEqual(r.height, 2)
+        self.assertEqual(r.x, 3)
+        self.assertEqual(r.y, 4)
+
+
+class TestSaveToFile(unittest.TestCase):
+    """Test for the save_to_file method """
+
+    def test_save_to_class(self):
+        """test case of None """
+        with self.assertRaises(TypeError):
+            Rectangle.save_to_file(None)
