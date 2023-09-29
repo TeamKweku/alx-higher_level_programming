@@ -13,13 +13,15 @@ if __name__ == "__main__":
     url = sys.argv[1]
     response = requests.get(url)
 
-    try:
-        response.raise_for_status()
-    except requests.exceptions.HTTPError as e:
-        print(f"Error: {e}")
-    else:
-        x_req_id = response.headers.get('X-Request-Id')
-        if x_req_id:
-            print(x_req_id)
-        else:
-            print("X-Request-Id Not Found")
+    x_req_id = response.headers.get('X-Request-Id')
+    print(x_req_id)
+    # try:
+    #     response.raise_for_status()
+    # except requests.exceptions.HTTPError as e:
+    #     print(f"Error: {e}")
+    # else:
+    #     x_req_id = response.headers.get('X-Request-Id')
+    #     if x_req_id:
+    #         print(x_req_id)
+    #     else:
+    #         print("X-Request-Id Not Found")
