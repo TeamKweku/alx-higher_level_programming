@@ -3,6 +3,7 @@
 import requests
 import sys
 
+
 def fetch_commits(repository, owner):
     url = f'https://api.github.com/repos/{owner}/{repository}/commits'
     params = {'per_page': 10}
@@ -17,6 +18,7 @@ def fetch_commits(repository, owner):
     else:
         print(f'Failed to fetch commits. Status code: {response.status_code}')
         print(response.text)
+
 
 if __name__ == '__main__':
     if len(sys.argv) != 3:
