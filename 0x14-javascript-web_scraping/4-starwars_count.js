@@ -9,16 +9,18 @@ if (process.argv.length < 3) {
 }
 
 const url = process.argv[2];
-const character = 'https://swapi-api.alx-tools.com/api/people/18/';
+// const character = 'https://swapi-api.alx-tools.com/api/people/18/';
 
 request(url, (error, response, body) => {
   if (error) {
     console.log(error);
   } else {
-    if (response.statusCode === 200) {
-      const movies = JSON.parse(body).results;
-      const match = movies.filter((movie) => movie.characters.includes(character));
-      console.log(match.length);
-    }
+    const count = body.split('/people/18/').length - 1;
+    console.log(count);
+    // if (response.statusCode === 200) {
+    //   const movies = JSON.parse(body).results;
+    //   const match = movies.filter((movie) => movie.characters.includes(character));
+    //   console.log(match.length);
+    // }
   }
 });
